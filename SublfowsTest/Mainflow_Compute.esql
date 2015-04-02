@@ -1,0 +1,17 @@
+
+
+CREATE COMPUTE MODULE Mainflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		IF InputRoot.XMLNSC.bikes.bike[1]= 'honda' THEN
+			SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelname = 'honda';
+		ELSE
+			SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelname = 'kawasaki';
+		END IF;
+		RETURN TRUE;
+		
+	END;
+
+
+END MODULE;
